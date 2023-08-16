@@ -77,13 +77,16 @@ add_library(opentimelineio ${OTIO_SHARED_OR_STATIC_LIB}
 
 add_library(OTIO::opentimelineio ALIAS opentimelineio)
 
-target_include_directories(opentimelineio
-    PRIVATE       "${IMATH_INCLUDES}"
-                  "${PROJECT_SOURCE_DIR}/src"
-                  "${PROJECT_SOURCE_DIR}/src/deps"
-                  "${PROJECT_SOURCE_DIR}/src/deps/optional-lite/include"
-                  "${PROJECT_SOURCE_DIR}/src/deps/rapidjson/include"
-                  "${IMATH_INCLUDES}")
+target_include_directories(
+    opentimelineio
+    PRIVATE     
+    $<BUILD_INTERFACE:${IMATH_INCLUDES}>
+    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
+    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/deps>
+    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/deps/optional-lite/include>
+    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/deps/rapidjson/include>
+    $<BUILD_INTERFACE:${IMATH_INCLUDES}>
+)
 
 target_link_libraries(opentimelineio 
     PUBLIC opentime ${OTIO_IMATH_TARGETS})
