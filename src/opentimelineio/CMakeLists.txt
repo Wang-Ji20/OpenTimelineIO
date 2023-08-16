@@ -79,7 +79,7 @@ add_library(OTIO::opentimelineio ALIAS opentimelineio)
 
 target_include_directories(
     opentimelineio
-    PRIVATE     
+    PUBLIC     
     $<BUILD_INTERFACE:${IMATH_INCLUDES}>
     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/deps>
